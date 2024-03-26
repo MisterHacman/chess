@@ -12,9 +12,6 @@
 #define FILE	(u8) 0b00000111
 #define RANK	(u8) 0b00111000
 
-#define WHITE	(u64) 0
-#define BLACK	(u64) 0x80
-
 // Level I
 #define PAWN		(u8) 0x0
 #define ELEPHANT	(u8) 0x5
@@ -126,17 +123,17 @@ Board getBoard() {
 	Board board = {
 		.white_mask = 0x000000000000ffff,
 		.black_mask = 0xffff000000000000,
-		.rank_8 = (BLACK | TOWER) << 56
-			| (BLACK | HORSE) << 48
-			| (BLACK | BISHOP) << 40
-			| (BLACK | QUEEN) << 32
-			| (BLACK | KING) << 24
-			| (BLACK | BISHOP) << 16
-			| (BLACK | HORSE) << 8
-			| (BLACK | TOWER),
-		.rank_7 = 0x8080808080808080,
+		.rank_8 = (u64)TOWER << 56
+			| (u64)HORSE << 48
+			| (u64)BISHOP << 40
+			| (u64)QUEEN << 32
+			| (u64)KING << 24
+			| (u64)BISHOP << 16
+			| (u64)HORSE << 8
+			| (u64)TOWER,
+		.rank_7 = 0x0000000000000000,
 		.rank_6 = 0, .rank_5 = 0, .rank_4 = 0, .rank_3 = 0,
-		.rank_2 = 0x0,
+		.rank_2 = 0x0000000000000000,
 		.rank_1 = (u64)TOWER << 56
 			| (u64)HORSE << 48
 			| (u64)BISHOP << 40
